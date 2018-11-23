@@ -420,9 +420,9 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
         }
     }
 
-    private void hideDismiss(boolean hide) {
-        if (mDismissButton != null) {
-            mDismissButton.setVisibility(hide ? View.GONE : View.VISIBLE);
+    private void hideSkip(boolean hide) {
+        if (mSkipButton != null) {
+            mSkipButton.setVisibility(hide ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -610,8 +610,8 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
             return this;
         }
 
-        public Builder hideDismiss(boolean hide) {
-            showcaseView.hideDismiss(hide);
+        public Builder hideSkip(boolean hide) {
+            showcaseView.hideSkip(hide);
             return this;
         }
 
