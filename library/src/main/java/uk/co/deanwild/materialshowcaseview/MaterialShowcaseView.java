@@ -420,6 +420,12 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
         }
     }
 
+    private void hideDismiss(boolean hide) {
+        if (mDismissButton != null) {
+            mDismissButton.setVisibility(hide ? View.GONE : View.VISIBLE);
+        }
+    }
+
     private void setTitleTextColor(int textColour) {
         if (mTitleTextView != null) {
             mTitleTextView.setTextColor(textColour);
@@ -601,6 +607,11 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
 
         public Builder setDismissStyle(Typeface dismissStyle) {
             showcaseView.setDismissStyle(dismissStyle);
+            return this;
+        }
+
+        public Builder hideDismiss(boolean hide) {
+            showcaseView.hideDismiss(hide);
             return this;
         }
 
