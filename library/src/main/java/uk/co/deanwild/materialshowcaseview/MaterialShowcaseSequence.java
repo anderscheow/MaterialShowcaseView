@@ -16,6 +16,7 @@ public class MaterialShowcaseSequence implements IDetachedListener {
     private ShowcaseConfig mConfig;
     private int mSequencePosition = 0;
 
+    private OnSequenceItemStartListener mOnItemStartListener = null;
     private OnSequenceItemShownListener mOnItemShownListener = null;
     private OnSequenceItemDismissedListener mOnItemDismissedListener = null;
 
@@ -72,6 +73,10 @@ public class MaterialShowcaseSequence implements IDetachedListener {
         return mShowcaseQueue.size();
     }
 
+    public void setOnItemStartListener(OnSequenceItemStartListener listener) {
+        this.mOnItemStartListener = listener;
+    }
+
     public void setOnItemShownListener(OnSequenceItemShownListener listener) {
         this.mOnItemShownListener = listener;
     }
@@ -90,6 +95,10 @@ public class MaterialShowcaseSequence implements IDetachedListener {
     }
 
     public void start() {
+
+        if (mOnItemStartListener != null) {
+            mOnItemStartListener.onStart();
+        }
 
         /**
          * Check if we've already shot our bolt and bail out if so         *
@@ -205,6 +214,10 @@ public class MaterialShowcaseSequence implements IDetachedListener {
 
     public void setConfig(ShowcaseConfig config) {
         this.mConfig = config;
+    }
+
+    public interface OnSequenceItemStartListener {
+        void onStart();
     }
 
     public interface OnSequenceItemShownListener {
